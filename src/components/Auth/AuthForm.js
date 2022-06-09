@@ -39,7 +39,7 @@ const AuthForm = () => {
       )
         .then((res) => {
           return res.json().then((data) => {
-            authContext.login(data.idToken);
+            authContext.login(data.idToken, new Date(new Date().getTime() + (+data.expiresImn * 1000)).toISOString);
             history.replace('/')
           });
         })
